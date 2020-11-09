@@ -10,9 +10,10 @@ const Formdata = [
     type: 'dropdown',
     label: 'country',
     key: `country`,
+    value: "FR",
     options: [
-      { label: 'Morocco', value: 'MAR', selected: true },
-      { label: 'France', value: 'FR' },
+      { label: 'Morocco', value: 'MAR'},
+      { label: 'France', value: 'FR'},
       { label: 'Spain', value: 'SP' },
     ],
   },
@@ -20,10 +21,12 @@ const Formdata = [
 ];
 
 const template = (label, input) => {
-  <div>
-    <label>{label}</label>
-    {input}
-  </div>;
+  return (
+    <div key={input.key}>
+      <label>{label}</label>
+      {input}
+    </div>
+  );
 };
 const App = () => {
   return (
