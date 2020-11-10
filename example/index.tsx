@@ -4,12 +4,13 @@ import * as ReactDOM from 'react-dom';
 import FormGen from '../.';
 
 const Formdata = [
-  { type: 'text', label: 'full name', key: 'full_name' },
-  { type: 'email', label: 'email', key: 'email' },
+  { type: 'text', label: 'full name', key: 'full_name', id:'full_name' },
+  { type: 'email', label: 'email', key: 'email' , id: 'email' },
   {
     type: 'dropdown',
     label: 'country',
     key: `country`,
+    id: `country`,
     value:'FR',
     options: [
       { label: 'Morocco', value: 'MAR' },
@@ -24,7 +25,7 @@ const Formdata = [
 const template = (label, input) => {
   return (
     <div key={input.key}>
-      {label && <label>{label}</label>}
+      {label && <label htmlFor={input.key}>{label}</label>}
       {input}
     </div>
   );
