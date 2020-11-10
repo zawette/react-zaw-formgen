@@ -4,14 +4,15 @@ import * as ReactDOM from 'react-dom';
 import FormGen from '../.';
 
 const Formdata = [
-  { type: 'text', label: 'full name', key: 'full_name', id:'full_name' },
-  { type: 'email', label: 'email', key: 'email' , id: 'email' },
+  { type: 'text', label: 'full name', key: 'full_name', id: 'full_name' },
+  { type: 'tel', label: 'phone', key: 'phone', id: 'phone' },
+  { type: 'email', label: 'email', key: 'email', id: 'email' },
   {
     type: 'dropdown',
     label: 'country',
     key: `country`,
     id: `country`,
-    value:'FR',
+    value: 'FR',
     options: [
       { label: 'Morocco', value: 'MAR' },
       { label: 'France', value: 'FR' },
@@ -31,20 +32,26 @@ const template = (label, input) => {
   );
 };
 
-const handleChange = (values) => (e) => {
-  console.log(values)
+const handleChange = values => e => {
+  console.log(values);
   console.log(e);
-}
+};
 
-const handleSubmit = (values) => (e) => {
-  e.preventDefault()
-console.log(values)
-}
+const handleSubmit = values => e => {
+  e.preventDefault();
+  console.log(values);
+};
 
 const App = () => {
   return (
     <div>
-      <FormGen data={Formdata} template={template} onChange={handleChange} onSubmit={handleSubmit} />
+      <FormGen
+        data={Formdata}
+        template={template}
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+        className="myform"
+      />
     </div>
   );
 };
