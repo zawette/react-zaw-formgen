@@ -41,10 +41,10 @@ function FormGen(props: Props) {
   const [values, setValues] = useState({});
 
   const handleChange = (input: any) => (e: React.ChangeEvent<any>) => {
-    setValues((oldValues: any) => {
-      oldValues[input.key] = e.target.value;
-      return oldValues;
-    });
+    setValues((oldValues: any) => ({
+      ...oldValues,
+      [input.key]: e.target.value,
+    }));
     onChange && onChange(values)(e);
   };
 
