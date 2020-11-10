@@ -32,12 +32,18 @@ const template = (label, input) => {
 
 const handleChange = (values) => (e) => {
   console.log(values)
+  console.log(e);
+}
+
+const handleSubmit = (values) => (e) => {
+  e.preventDefault()
+console.log(values)
 }
 
 const App = () => {
   return (
     <div>
-      <FormGen data={Formdata} template={template} onChange={handleChange} />
+      <FormGen data={Formdata} template={template} onChange={handleChange} onSubmit={handleSubmit} />
     </div>
   );
 };

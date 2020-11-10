@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState } from 'react';
 
 interface Props {
   data: { type: string; label?: any; key?: any; [key: string]: any }[];
@@ -36,20 +36,19 @@ const renderElement = (input: any,handleChange: (input: any) => (e: React.Change
 };
 
 function FormGen(props: Props) {
-  const { data, template,onChange } = props;
+  const { data, template,onChange,onSubmit } = props;
   const [values,setValues]=useState({});
 
-  const handleChange = (input:any) => (e:ChangeEvent<any>) => {
+  const handleChange = (input:any) => (e:React.ChangeEvent<any>) => {
     setValues((oldValues: any)=>{
       oldValues[input.key]=e.target.value;
-      console.log(oldValues);
      return oldValues
     })
-    onChange && onChange(values)
+    onChange && onChange(values)(e)
   }
 
   return (
-    <form>
+    <form onSubmit={onSubmit && onSubmit(values)}>
       {data.map(element => template(element.label!, renderElement(element,handleChange)))}
     </form>
   );
