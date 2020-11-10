@@ -10,7 +10,7 @@ const Formdata = [
     type: 'dropdown',
     label: 'country',
     key: `country`,
-    value: 'FR',
+    value:'FR',
     options: [
       { label: 'Morocco', value: 'MAR' },
       { label: 'France', value: 'FR' },
@@ -30,10 +30,14 @@ const template = (label, input) => {
   );
 };
 
+const handleChange = (values) => (e) => {
+  console.log(values)
+}
+
 const App = () => {
   return (
     <div>
-      <FormGen data={Formdata} template={template} />
+      <FormGen data={Formdata} template={template} onChange={handleChange} />
     </div>
   );
 };
