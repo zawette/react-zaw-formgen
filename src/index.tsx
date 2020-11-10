@@ -6,23 +6,25 @@ interface Props {
 }
 
 const renderElement = (input: any) => {
-  const {type,label, ...props } = input;
+  const { type, label, ...props } = input;
   switch (type) {
     case 'dropdown':
-      const { options,...dProps } = props;
+      const { options, ...dProps } = props;
       return (
         <select {...dProps}>
           <option></option>
           {options.map((option: any) => {
-            const {label,...optionProps}=option
+            const { label, ...optionProps } = option;
             return (
-            <option key={option.value} {...optionProps}>
-              {option.label}
-            </option>
-          )})}
+              <option key={option.value} {...optionProps}>
+                {option.label}
+              </option>
+            );
+          })}
         </select>
       );
-
+    case 'jsx':
+      return props.content;
     default:
       return <input type={type} {...props} />;
   }

@@ -10,24 +10,26 @@ const Formdata = [
     type: 'dropdown',
     label: 'country',
     key: `country`,
-    value: "FR",
+    value: 'FR',
     options: [
-      { label: 'Morocco', value: 'MAR'},
-      { label: 'France', value: 'FR'},
+      { label: 'Morocco', value: 'MAR' },
+      { label: 'France', value: 'FR' },
       { label: 'Spain', value: 'SP' },
     ],
   },
+  { type: 'jsx', content: <hr /> },
   { type: 'submit', value: 'Send', key: 'send' },
 ];
 
 const template = (label, input) => {
   return (
     <div key={input.key}>
-      <label>{label}</label>
+      {label && <label>{label}</label>}
       {input}
     </div>
   );
 };
+
 const App = () => {
   return (
     <div>
