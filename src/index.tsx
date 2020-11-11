@@ -2,11 +2,20 @@ import React, { useState } from 'react';
 
 interface Props {
   data: { type: string; label?: any; key?: any; [key: string]: any }[];
-  template: (label: string, input: React.ReactNode) => React.ReactNode;
+  template?: (label: string, input: any) => JSX.Element;
   onChange?: (values: any) => any;
   onSubmit?: (values: any) => any;
   className?: string;
 }
+
+const DefaultTemplate = (label: string, input: any) => {
+  return (
+    <div key={input.key}>
+      {label && <label htmlFor={input.key}>{label}</label>}
+      {input}
+    </div>
+  );
+};
 
 const renderElement = (
   input: any,
@@ -50,11 +59,17 @@ function FormGen(props: Props) {
 
   return (
     <form onSubmit={onSubmit && onSubmit(values)} className={className}>
-      {data.map(element =>
-        template(element.label!, renderElement(element, handleChange))
-      )}
+      {data &&
+        data.map(element =>
+          template!(element.label!, renderElement(element, handleChange))
+        )}
     </form>
   );
 }
+
+FormGen.defaultProps = {
+  className: '',
+  template: DefaultTemplate,
+} as Partial<Props>;
 
 export default FormGen;
