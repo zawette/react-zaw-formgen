@@ -1,6 +1,18 @@
 {
   "version": "0.1.0",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zawette/react-zaw-formgen.git"
+  },
+  "keywords": [
+    "react",
+    "form",
+    "json",
+    "typescript",
+    "generator",
+    "react-zaw-formgen"
+  ],
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
@@ -33,7 +45,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "react-form-gen",
+  "name": "react-zaw-formgen",
   "author": "zawette",
   "module": "dist/react-form-gen.esm.js",
   "size-limit": [
